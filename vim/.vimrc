@@ -1,113 +1,201 @@
-set nocompatible
-syntax enable
-set encoding=utf-8
-set enc=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf8,prc
-" Display incomplete commands
-set showcmd
+" https://habrahabr.ru/post/221267/
+" vim as IDE for c++
+set exrc
+set secure
+
+" https://github.com/tpope/vim-pathogen
+call pathogen#infect()
+filetype off
+syntax on
 filetype plugin indent on
 
-" Disable folding by default
-set nofoldenable
+" http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
-"Reasonable line movement"
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-
-" In Normal mode, arrow keys switch windows
-nnoremap <up> <C-w><up>
-nnoremap <down> <C-w><down>
-nnoremap <left> <C-w><left>
-nnoremap <right> <C-w><right>
-" In Insert mode, disable arrow keys
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" Whitespace handling
-set tabstop=2 shiftwidth=2  " Tab is two spaces
-set expandtab               " Use spaces, not tabs
-set backspace=indent,eol,start " Backspace through everything
-
-" Indentation
-set autoindent
-
-" UI
-set t_Co=256
-set background=dark
-" colors flowhub
-colors zenburn
-set number                  " Line numbering"
-set guioptions-=m           " Remove menu in GUI
-set guioptions-=T           " Remove toolbar in GUI
-set showmode
-
-" Style vertical splits
-set fillchars+=vert:\ 
-
-" Visualize tabs and linebreaks
-set list
-set listchars=tab:▸\ ,eol:¬
-
-" Nicer visualization for linting errors and warnings
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_sign_error = "◉"
-let g:ale_sign_warning = '•'
-highlight link ALEErrorSign    Error
-highlight link ALEWarningSign  Warning
-
-" Improve NerdTree looks
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" Improve Airline status bar
-let g:airline_theme='zenburn'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline_powerline_fonts = 1
-
+syntax on
+let c_space_errors=1
+set sm
 set ruler
+set ai
+set smd
+"set filec=@
+"set matchtime=5
+"set cindent
+"set cinoptions=t0(0+4:0g0
+"set wildmode=longest,list
+"set vb t_vb=
+"set hlsearch
+set incsearch
+"set ts=4
 
-" Keyboard mappings, Ctrl-X, C, V
-vnoremap <C-X> "+x
-vnoremap <C-C> "+y
-map <C-V> "+gP
 
-" jj for escape
-imap jj <Esc>
+" " set tt syntax highlighting
+" au BufNewFile,BufRead *.tt exe "set syntax=tt2html.vim"
+" au BufNewFile,BufRead *.tt2 exe "set syntax=tt2html.vim"
 
-" Always be in the directory of the file
-"set autochdir We use rooter now
+" toggle between paste modes
+set pastetoggle=<F4>
+" remember file pos
+if has("autocmd")
+	" filetype plugin indent on
+	autocmd FileType text setlocal textwidth=78
+	autocmd BufReadPost *   if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+endif
 
-" Backups in one place
-set nobackup
-set nowritebackup
-set noswapfile
+imap <F2> <Esc>:w<CR>a
+nmap <F2> :w<CR>
 
-" Nicer searching
-set incsearch               " Incremental searching
-set hlsearch                " Highlight matches
-set showmatch               " Show match numbers
-set ignorecase              " Search case-insensitive
-set smartcase               " ...except when something is capitalized
+" grep
+" F3 - Run recursive grep
+nnoremap <silent> <F3> :Rgrep<cr>
+" Shift-F3 - Same as ":Rgrep" but adds the results to the current results
+nnoremap <silent> <S-F3> :RgrepAdd<cr>
+" Ctrl-F3 - Search for a pattern on all open buffers
+nnoremap <silent> <C-F3> :GrepBuffer<cr>
 
-" File navigation
-let mapleader=","           " Use comma as <leader>
+imap <F5> <Esc>:!perl -MVi::QuickFix -cw -- %<CR>a
+nmap <F5> :!perl -MVi::QuickFix -cw -- %<CR>
+imap <C-F5> <Esc>:!perl -- %<CR>a
+nmap <C-F5> :!perl -- %<CR>
+" look at VimDebug
+" imap <F7> <Esc>:!perl -d -- %<CR>a
+" nmap <F7> :!perl -d -- %<CR>
 
-" Switch between relative and absolute line numbers depending on mode
-set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+" exec
+imap <F9> <Esc>:!make<CR>a
+nmap <F9> :!make<CR>
 
-" Open NerdTree on start-up if given a directory path
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" Ctrl-N for opening/closing NerdTree
-map <C-n> :NERDTreeToggle<CR>
-" Close NerdTree automatically after opening a file
-let NERDTreeQuitOnOpen = 1
-" Show dotfiles by default
-let NERDTreeShowHidden=1
+imap <F12> <Esc>:TlistToggle<CR>a
+nmap <F12> :TlistToggle<CR>
+
+"color morning
+"color evening
+
+" best practices tab
+"An indentation level every four columns"
+set tabstop=4
+"Convert all tabs typed into spaces"
+"set expandtab
+set noexpandtab
+"Indent/outdent by four columns"
+set shiftwidth=4
+"Always indent/outdent to the nearest tabstop"
+set shiftround
+
+" line numbers
+"set number
+
+" ConqueTerm gdb options:
+" 1: strip color after 200 lines,
+" 2: always with color
+let g:ConqueTerm_Color = 2
+" close conque when program ends running
+"let g:ConqueTerm_CloseOnEnd = 1
+" display warning messages if conqueTerm is configured incorrectly  
+let g:ConqueTerm_StartMessages = 0
+
+" perlomni
+"filetype plugin on
+"set ofu=syntaxcomplete#Complete
+
+" fold
+let perl_fold = 1
+let perl_fold_blocks = 1
+let perl_fold_subs = 1
+let perl_nofold_packages = 1
+" save/restore folds automagically
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+
+"
+nnoremap <Leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" http://amix.dk/blog/post/19329
+" Now you need to configure taglist.vim, this can be done like this:
+" let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+" let Tlist_WinWidth = 50
+" map <F4> :TlistToggle<cr>
+
+" recipe from
+" http://vim.wikia.com/wiki/Switch_between_Vim_window_splits_easily
+" set wmh=0
+" map <C-J> <C-w>j<C-w>_
+" map <C-K> <C-w>k<C-w>_
+" set wmw=0
+" nmap <c-H> <c-w>h<c-w><Bar>
+" nmap <c-L> <c-w>l<c-w><Bar>
+
+" tabs
+" imap ,t <Esc>:tabnew<CR>
+" nmap ,t :tabnew<CR>
+
+:nnoremap <F4> :buffers<CR>:buffer<Space>
+
+" russian mappings
+" perl -Mutf8 -E'$e="qwertyuiop[]asdfghjkl;'\''zxcvbnm,.";$r="йцукенгшщзхъфывапролджэячсмитьбю";for($i=0;$i<length$e;$i++){say "map ".substr($r,$i,1)." ".substr($e,$i,1);say "map ".uc substr($r,$i,1)." ".uc substr($e,$i,1)}' 2>/dev/null
+map й q
+map Й Q
+map ц w
+map Ц W
+map у e
+map У E
+map к r
+map К R
+map е t
+map Е T
+map н y
+map Н Y
+map г u
+map Г U
+map ш i
+map Ш I
+map щ o
+map Щ O
+map з p
+map З P
+map х [
+map Х [
+map ъ ]
+map Ъ ]
+map ф a
+map Ф A
+map ы s
+map Ы S
+map в d
+map В D
+map а f
+map А F
+map п g
+map П G
+map р h
+map Р H
+map о j
+map О J
+map л k
+map Л K
+map д l
+map Д L
+map ж ;
+map Ж :
+map э '
+map Э '
+map я z
+map Я Z
+map ч x
+map Ч X
+map с c
+map С C
+map м v
+map М V
+map и b
+map И B
+map т n
+map Т N
+map ь m
+map Ь M
+map б ,
+map Б ,
+map ю .
+map Ю .
+" специальные:
+map ; $
