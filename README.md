@@ -1,7 +1,7 @@
 My Unix dotfiles
 ================
 
-Mostly used for Node.js and IoT development.
+Mostly used for perl/python/ML development. Tiny UI with node+npm+brunch.
 
 ## Running via Docker
 
