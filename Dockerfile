@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
       wget \
       tmux \
       vim \
+      exuberant-ctags \
       mosh \
       python3 \
       python3-dev \
