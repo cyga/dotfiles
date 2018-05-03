@@ -48,3 +48,21 @@ For vim you'll also want to fetch the plugins:
 ```term
 $ git submodule update --init
 ```
+
+## Docker
+
+[Documentation](https://docs.docker.com/docker-hub/repos/#pushing-a-repository-image-to-docker-hub)
+
+### Build
+
+```term
+$ docker build --no-cache -t <hub-user>/<repo-name>:<tag>
+$ docker build --no-cache -t cyga/dev:v0.05
+```
+
+### Push
+
+```term
+$ docker push <hub-user>/<repo-name>:<tag>
+$ docker push cyga/dev:v0.05
+```
