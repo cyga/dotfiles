@@ -31,4 +31,4 @@ notifications:
     on_failure: always
 matrix:
   include:
-  - env: TARGET=x86 DOCKER_IMAGE=bergie/shell
+  - env: TARGET=x86 DOCKER_IMAGE=cyga/dev
