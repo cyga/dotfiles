@@ -1,6 +1,8 @@
 My Unix dotfiles
 ================
 
+Inspired by [this post](https://bergie.iki.fi/blog/docker-developer-shell/).
+
 Mostly used for perl/python/ML development. Tiny UI with node+npm+brunch.
 
 ## Running via Docker
