@@ -1,0 +1,47 @@
+== Comments.end-of-line-comment == append, nomenu ==
+# <CURSOR>
+== Comments.frame == map:cfr, sc:f  ==
+#-------------------------------------------------------------------------------
+#  <CURSOR>
+#-------------------------------------------------------------------------------
+== Comments.function == map:cfu, sc:f  ==
+
+== Comments.method == map:cme, sc:m  ==
+
+== Comments.file description pl == map:chpl, sc:d, start, noindent ==
+
+#!/usr/bin/env perl 
+use Mojo::Base -strict;
+
+== Comments.file description pm == map:chpm, sc:d, start, noindent ==
+#!/usr/bin/env perl 
+use Mojo::Base -strict;
+ 
+== Comments.file description t == map:cht, sc:d, start, noindent ==
+#!/usr/bin/env perl 
+use Mojo::Base -strict;
+use Test::More qw(no_plan);
+
+
+== Comments.file description pod == map:chpo, sc:d, start ==
+
+
+== Comments.date == insert, map:cd, sc:d ==
+|DATE|<CURSOR>
+== Comments.date+time == insert, map:ct, sc:t ==
+|DATE| |TIME|<CURSOR>
+== ENDTEMPLATE ==
+
+== LIST: comments_keywords == hash ==
+
+== LIST: comments_macros == hash ==
+
+== ENDLIST ==
+
+== Comments.keyword comments == expandmenu, append, map:ck, sc:k ==
+|PickList( 'keyword comment', 'comments_keywords' )|
+ # |PICK| <CURSOR>
+== Comments.macros == expandmenu, insert, map:cma, sc:m ==
+|PickList( 'macro', 'comments_macros' )|
+|PICK|<CURSOR>
+== ENDTEMPLATE ==
