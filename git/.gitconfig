@@ -1,10 +1,17 @@
 [user]
-	name = Henri Bergius
-	email = henri.bergius@iki.fi
-	signingkey = henri.bergius@iki.fi
-[diff "odf"]
-  textconv = odt2txt
+	name = Alex Sudakov
+	email = cygakob@gmail.com
+	signingkey = cygakob@gmail.com
 [color]
-	diff = true
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
 [push]
-	default = matching
+	default = current
+[pull]
+	default = current
