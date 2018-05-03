@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
 	  libterm-readline-perl-perl \
 	  libterm-readline-gnu-perl \
 	  cpanminus \
+	  ack-grep \
       tzdata \
       psmisc \
       curl \
