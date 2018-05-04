@@ -12,26 +12,27 @@ RUN perl -pi -e"s#archive\.ubuntu\.com#mirror.yandex.ru#g" /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
       build-essential \
       software-properties-common \
-	  perl \
-	  libterm-readkey-perl \
-	  libterm-readline-perl-perl \
-	  libterm-readline-gnu-perl \
-	  cpanminus \
-	  ack-grep \
+	  perl libterm-readkey-perl libterm-readline-perl-perl libterm-readline-gnu-perl cpanminus ack-grep libdbi-perl libdbd-mysql libdbd-pg-perl libdatetime-perl libmoose-perl libdbix-class-schema-loader-perl \
       tzdata \
       psmisc \
       curl \
       git \
       wget \
       tmux \
-      vim \
-      exuberant-ctags \
+      vim exuberant-ctags \
       mosh \
-      python3 \
-      python3-dev \
-      python3-pip
-# TODO
-# ML packages here
+      python3 python3-dev python3-pip python3-numpy python3-pandas \
+	  ruby ruby-dev
+
+RUN cpanm Mojolicious Mojolicious::Plugin::AccessLog Mojolicious::Plugin::Authentication Mojolicious::Plugin::CHI CHI::Driver::Memcached::libmemcached MooseX::MarkAsMethods Exporter::Easy Devel::Backtrace
+# takes too long and looks like cpanm kills it (w/o output)
+# in debug mode it finishes successfully
+RUN cpanm --verbose Cache::Memcached::libmemcached
+
+RUN pip3 install xgboost lightgbm
+# pytorch from https://pytorch.org/
+RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install torchvision
 
 # Install Node.js LTS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
