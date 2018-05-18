@@ -11,7 +11,7 @@ RUN perl -pi -e"s#archive\.ubuntu\.com#mirror.yandex.ru#g" /etc/apt/sources.list
 # Common packages
 RUN apt-get update && apt-get install -y \
       build-essential \
-      software-properties-common \
+      software-properties-common man-db \
 	  perl perl-doc libterm-readkey-perl libterm-readline-perl-perl libterm-readline-gnu-perl cpanminus ack-grep mysql-client-core-5.7 libmysqlclient-dev libdbi-perl libdbd-mysql libdbd-mysql-perl libdbd-pg-perl libdatetime-perl libmoose-perl libdbix-class-schema-loader-perl \
       tzdata \
       psmisc \
