@@ -75,8 +75,8 @@ nmap <F12> :TlistToggle<CR>
 "An indentation level every four columns"
 set tabstop=4
 "Convert all tabs typed into spaces"
-"set expandtab
-set noexpandtab
+set expandtab
+"set noexpandtab
 "Indent/outdent by four columns"
 set shiftwidth=4
 "Always indent/outdent to the nearest tabstop"
