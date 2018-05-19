@@ -33,6 +33,8 @@ RUN pip3 install xgboost lightgbm jupyter
 # pytorch from https://pytorch.org/
 RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
 RUN pip3 install torchvision
+# last, not to break pip, as in shell, where you need to restart shell to run it ok (most probably binary reference changed)
+RUN pip3 install --upgrade pip
 
 # Install Node.js LTS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
