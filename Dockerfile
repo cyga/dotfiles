@@ -29,7 +29,7 @@ RUN cpanm Mojolicious Mojolicious::Plugin::AccessLog Mojolicious::Plugin::Authen
 # in debug mode it finishes successfully
 RUN cpanm --verbose Cache::Memcached::libmemcached
 
-RUN pip3 install xgboost lightgbm jupyter
+RUN pip3 install xgboost lightgbm jupyter skimage
 # pytorch from https://pytorch.org/
 RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
 RUN pip3 install torchvision
