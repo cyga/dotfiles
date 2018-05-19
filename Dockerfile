@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
       tmux \
       vim exuberant-ctags \
       mosh \
-      python3 python3-dev python3-pip python3-numpy python3-pandas \
+      python3 python3-dev python3-pip python3-numpy python3-pandas python3-skimage-lib \
 	  ruby ruby-dev
 
 RUN cpanm Mojolicious Mojolicious::Plugin::AccessLog Mojolicious::Plugin::Authentication Mojolicious::Plugin::CHI CHI::Driver::Memcached::libmemcached MooseX::MarkAsMethods Exporter::Easy Devel::Backtrace
@@ -29,7 +29,7 @@ RUN cpanm Mojolicious Mojolicious::Plugin::AccessLog Mojolicious::Plugin::Authen
 # in debug mode it finishes successfully
 RUN cpanm --verbose Cache::Memcached::libmemcached
 
-RUN pip3 install xgboost lightgbm jupyter skimage
+RUN pip3 install xgboost lightgbm jupyter
 # pytorch from https://pytorch.org/
 RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
 RUN pip3 install torchvision
