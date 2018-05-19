@@ -52,6 +52,8 @@ COPY ./bash/* /root/
 COPY ./vim/ /root/
 COPY ./git/* /root/
 COPY ./mysql/* /root/
+RUN mkdir -p /root/.jupyter
+COPY ./jupyter/* /root/.jupyter/
 
 # Set up volumes
 WORKDIR /projects
