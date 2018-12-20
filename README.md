@@ -57,14 +57,16 @@ $ git submodule update --init
 
 ### Build
 
+Check your dev dockers at [docker site](https://cloud.docker.com/repository/docker/cyga/dev)
+
 ```term
 $ docker build --no-cache -t <hub-user>/<repo-name>:<tag>
-$ docker build --no-cache -t cyga/dev:v0.05
+$ docker build --no-cache -t cyga/dev:v0.07
 ```
 
 ### Push
 
 ```term
 $ docker push <hub-user>/<repo-name>:<tag>
-$ docker push cyga/dev:v0.05
+$ docker push cyga/dev:v0.07
 ```
