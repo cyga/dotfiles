@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # Locales
 RUN apt-get update && apt-get install -y locales
@@ -11,7 +11,7 @@ RUN perl -pi -e"s#archive\.ubuntu\.com#mirror.yandex.ru#g" /etc/apt/sources.list
 # Common packages
 RUN apt-get update && apt-get install -y \
       build-essential \
-      software-properties-common man-db \
+      software-properties-common sudo man-db \
 	  perl perl-doc libterm-readkey-perl libterm-readline-perl-perl libterm-readline-gnu-perl cpanminus ack-grep mysql-client-core-5.7 libmysqlclient-dev libdbi-perl libdbd-mysql libdbd-mysql-perl libdbd-pg-perl libdatetime-perl libmoose-perl libdbix-class-schema-loader-perl \
       tzdata \
       psmisc \
@@ -29,13 +29,16 @@ RUN cpanm Mojolicious Mojolicious::Plugin::AccessLog Mojolicious::Plugin::Authen
 # in debug mode it finishes successfully
 RUN cpanm --verbose Cache::Memcached::libmemcached
 
+# w/o it it breaks on xgboost lightgbm jupyter install
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+RUN alias pip3='/usr/local/bin/pip3'
 RUN pip3 install --upgrade scikit-image scipy
 RUN pip3 install xgboost lightgbm jupyter
 # pytorch from https://pytorch.org/
-RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.0-cp35-cp35m-linux_x86_64.whl
+RUN pip3 install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
 RUN pip3 install torchvision
 # last, not to break pip, as in shell, where you need to restart shell to run it ok (most probably binary reference changed)
-RUN pip3 install --upgrade pip
+#RUN pip3 install --upgrade pip
 
 # Install Node.js LTS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
