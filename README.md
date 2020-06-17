@@ -1,73 +1,54 @@
-My Unix dotfiles
-================
+# Easy to use dev environment with Docker
 
 Inspired by [this post](https://bergie.iki.fi/blog/docker-developer-shell/).
 
-Mostly used for perl/python/ML development. Tiny UI with node+npm+brunch.
+Mostly used for perl/python/ML development.
 
-## Running via Docker
+# HOWTO
 
-There is a Docker image available for this setup. Run it with:
+## Usage
 
-```shell
-$ docker run -v ~/Projects:/projects -v workstation:/root -v ~/.ssh:/keys --name workstation --rm -it bergie/shell
+There is a Docker image available for this setup at docker hub:
+
+```bash
+docker run -v ~/project-dir:/projects/project-dir -v ~/.ssh:/keys --name <NAME> --rm -it cyga/ubuntu20.04-dev
 ```
 
-### Updating the container
+Other docker hub repositiories can be used as well.
 
-```shell
-$ docker volume rm workstation && docker volume create workstation
-$ docker pull bergie/shell
+## Requirements
+
+To use the container above you need to have tmux installed. It's easy to do under linux, for windows you can use WSL2 + Docker in Windows.
+
+## Create
+
+In order to create another container:
+
+```
+docker build -t <HUB_USER>/<CONTAINER_NAME> .
+# for example:
+# docker build -t cyga/ubuntu20.04-dev .
 ```
 
-### Requirements
+You can re-start failed process (missing package or smth else).
 
-* Terminal application (xterm, iTerm2, whatever)
-* Docker
-* [Powerline fonts](https://github.com/powerline/fonts)
+## Push to docker hub
 
-## Installation on host
 
-These dotfiles are easiest to deploy with [GNU Stow](https://www.gnu.org/software/stow/). Install it for the appropriate operating system:
-
-```term
-$ sudo apt-get install stow # Debian derivatives
-$ sudo pacman -S stow       # Arch
-$ brew install stow         # MacOS
-$ apt install stow          # Termux
+```
+docker push <HUB_USER>/<CONTAINER_NAME>
+# for example:
+# docker push cyga/ubuntu20.04-dev
 ```
 
-Then apply the configuration bundles you want:
+or with version:
 
-```term
-$ stow zsh                  # zsh and tmux configuration
-$ stow git                  # git configuration
-$ stow vim                  # vim configuration
+```
+docker push <HUB_USER>/<CONTAINER_NAME>:<TAG>
+# for example:
+# docker push cyga/ubuntu20.04-dev:v0.01
 ```
 
-For vim you'll also want to fetch the plugins:
-
-```term
-$ git submodule update --init
-```
-
-## Docker
-
-[Documentation](https://docs.docker.com/docker-hub/repos/#pushing-a-repository-image-to-docker-hub)
-
-### Build
+## Builds
 
 Check your dev dockers at [docker site](https://cloud.docker.com/repository/docker/cyga/dev)
-
-```term
-# from main rep directory:
-$ docker build --no-cache -t <hub-user>/<repo-name>:<tag> .
-$ docker build --no-cache -t cyga/dev:v0.07 .
-```
-
-### Push
-
-```term
-$ docker push <hub-user>/<repo-name>:<tag>
-$ docker push cyga/dev:v0.07
-```
