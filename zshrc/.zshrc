@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/omerhamerman/.oh-my-zsh
+#export ZSH=/Users/omerhamerman/.oh-my-zsh
 # Reevaluate the prompt string each time it's displaying a prompt
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -96,8 +96,10 @@ alias http="xh"
 bindkey jj vi-cmd-mode
 
 # Eza
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
+alias lg="eza -l --icons --git -a"
+alias l="eza -l --icons -a"
+alias ltg="eza --tree --level=2 --long --icons --git"
+alias lt="eza --tree --level=2 --long --icons"
 
 # SEC STUFF
 alias gobust='gobuster dir --wordlist ~/security/wordlists/diccnoext.txt --wildcard --url'
