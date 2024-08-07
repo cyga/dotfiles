@@ -30,6 +30,8 @@ return {
 			mods = 'CTRL',
 			action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
 		},
+    { key = 'PageUp', mods = 'SHIFT', action = wezterm.action.ScrollByPage(-1) },
+    { key = 'PageDown', mods = 'SHIFT', action = wezterm.action.ScrollByPage(1) },
 	},
 	mouse_bindings = {
 	  -- Ctrl-click will open the link under the mouse cursor
