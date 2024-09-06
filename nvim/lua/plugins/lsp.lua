@@ -74,6 +74,17 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+-- by asudakov using:
+-- https://engwiki.uberinternal.com/display/GOMONOREPO/%5BCommunity+Supported%5D+Vim#id-[CommunitySupported]Vim-Background
+require('lspconfig').gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {'gopls', '-remote=auto'},
+  init_options = {
+    staticcheck = true,
+    gofumpt = true,
+  },
+}
 
 -- Turn on lsp status information
 require('fidget').setup()
