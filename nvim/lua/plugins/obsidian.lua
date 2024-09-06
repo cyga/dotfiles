@@ -2,7 +2,7 @@ require("obsidian").setup({
   workspaces = {
     {
       name = "Notes",
-      path = "/Users/alexandr.sudakov/Obsidian/Notes",
+      path = os.getenv("HOME") .. "/Obsidian/Notes",
     },
   },
 })
