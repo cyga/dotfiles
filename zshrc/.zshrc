@@ -60,10 +60,12 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # GO
-#export GOPATH='/Users/omerhamerman/go'
+#export GOPATH="$HOME/go"
 
 # VIM
-alias v="/opt/homebrew/bin/nvim"
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
 
 # Nmap
 alias nm="nmap -sC -sV -oN nmap"
