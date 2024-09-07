@@ -16,7 +16,9 @@ require('plugins.zenmode')
 require('plugins.neogit')
 require('plugins.codesnap')
 require('plugins.harpoon')
-require('plugins.uber')
+if os.getenv("UBER_LDAP_UID") ~= "" then
+  require('plugins.uber')
+end
 
 -- vim: ts=8 sts=2 sw=2 et
 
