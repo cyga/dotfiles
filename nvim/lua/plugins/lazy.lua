@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Fixes Notify opacity issues
 vim.o.termguicolors = true
 
-require('lazy').setup({
+local plugins = {
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -306,4 +306,17 @@ require('lazy').setup({
       require("nvim-tree").setup {}
     end,
   },
-})
+}
+if os.getenv("UBER_LDAP_UID") ~= "" then
+  table.insert(plugins, {
+    "github/copilot.vim",
+    lazy = false,
+    -- event = "VeryLazy",
+    config = function()
+      -- copilot assume mapped
+      -- vim.g.copilot_assume_mapped = true
+      -- vim.g.copilot_no_tab_map = true
+    end,
+  })
+end
+require('lazy').setup(plugins)
