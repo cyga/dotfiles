@@ -44,6 +44,16 @@ alias ga='git add -p'
 alias gcoall='git checkout -- .'
 alias gr='git remote'
 alias gre='git reset'
+# git cyga
+alias gcaa="git ci -a --amend"
+alias gpr="git pull --rebase"
+alias gri="git rebase -i origin/main"
+alias grc="git rebase --continue"
+# https://stackoverflow.com/questions/29717502/run-git-pull-rebase-in-interactive-mode
+alias gpri="git pull --rebase=interactive"
+alias gb="git branch"
+alias gbd="git branch --delete"
+alias gbD="git branch -D"
 
 # Docker
 alias dco="docker compose"
