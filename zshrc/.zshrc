@@ -71,6 +71,8 @@ alias ......="cd ../../../../.."
 
 # GO
 #export GOPATH="$HOME/go"
+alias t="bazel test :go_default_test"
+alias rggo="rg --glob '*.go'"
 
 # VIM
 alias v="nvim"
