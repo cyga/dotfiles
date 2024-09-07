@@ -110,6 +110,8 @@ alias http="xh"
 bindkey jj vi-cmd-mode
 
 # Eza
+# colors for ls:
+export CLICOLOR=1
 alias ls='ls -G'
 alias ll='eza -l'
 alias lg="eza -l --icons --git -a"
