@@ -81,11 +81,15 @@ local plugins = {
     },
     config = function()
       require("nvim-tree").setup({
-        respect_buf_cwd = false,
-        vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false }),
-        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }),
-        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }),
-        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }),
+        respect_buf_cwd = true;
+        update_focused_file = {
+          enable = true,
+          update_cwd = true,
+        };
+        vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false });
+        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" });
+        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" });
+        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" });
       })
     end,
   },
