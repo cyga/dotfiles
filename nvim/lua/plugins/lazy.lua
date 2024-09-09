@@ -66,23 +66,23 @@ local plugins = {
   'folke/zen-mode.nvim',
   'tpope/vim-obsession',
   -- Tree
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   version = "*",
-  --   lazy = true,
-  --   requires = {
-  --     "nvim-tree/nvim-web-devicons",
-  --   },
-  --   config = function()
-  --     require("nvim-tree").setup({
-  --       vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false }) 
-  --       -- vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) 
-  --       -- vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) 
-  --       -- vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) 
-  --     })
-  --   end,
-  -- },
-
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = true,
+    requires = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup({
+        respect_buf_cwd = false,
+        vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false }),
+        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }),
+        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }),
+        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }),
+      })
+    end,
+  },
   'ThePrimeagen/git-worktree.nvim',
   "tpope/vim-surround",
   'xiyaowong/nvim-transparent',
@@ -294,17 +294,6 @@ local plugins = {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
   },
 }
 if os.getenv("UBER_LDAP_UID") ~= "" then
