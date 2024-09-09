@@ -17,6 +17,12 @@ vim.o.termguicolors = true
 
 local plugins = {
   {
+    "mrcjkb/nvim-lastplace",
+    init = function()
+      -- optional configuration
+    end,
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
