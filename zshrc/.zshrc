@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-#export ZSH=/Users/omerhamerman/.oh-my-zsh
+#export ZSH=/Users/alexandr.sudakov/.oh-my-zsh
 # Reevaluate the prompt string each time it's displaying a prompt
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -9,7 +9,13 @@ compinit
 source <(kubectl completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh_sug=/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f $(brew --prefix)$zsh_sug ]]; then
+  source $(brew --prefix)$zsh_sug
+fi
+if [[ -f /usr$zsh_sug ]]; then
+  source /usr$zsh_sug
+fi
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
