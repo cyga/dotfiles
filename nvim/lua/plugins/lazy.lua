@@ -155,6 +155,7 @@ local plugins = {
 
   {
     "folke/noice.nvim",
+    commit = "d9328ef",
     config = function()
       require("noice").setup({
         -- add any options here
