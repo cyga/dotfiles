@@ -3,3 +3,4 @@ tmux/plugins/
 raycast
 fzf
 zshrc/uber.zsh
+nvim/lazy-lock.json
