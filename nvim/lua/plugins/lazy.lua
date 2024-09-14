@@ -307,7 +307,10 @@ local plugins = {
     }
   },
 }
-if os.getenv("UBER_LDAP_UID") ~= "" then
+local function isempty(s)
+  return s == nil or s == ''
+end
+if not isempty(os.getenv("UBER_LDAP_UID")) then
   table.insert(plugins, {
     "github/copilot.vim",
     lazy = false,
