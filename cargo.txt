@@ -1,0 +1,7 @@
+atuin
+fd-find
+starship
+ripgrep
+xh
+yazi-cli
+yazi-fm
