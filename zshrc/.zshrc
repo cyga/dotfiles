@@ -6,11 +6,15 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
-source <(kubectl completion zsh)
-complete -C '/usr/local/bin/aws_completer' aws
+if [[ -n $(which kubectl >/dev/null) ]]; then
+  source <(kubectl completion zsh)
+fi
+if [[ -n $(which aws >/dev/null) ]]; then
+  complete -C '/usr/local/bin/aws_completer' aws
+fi
 
 zsh_sug=/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-if [[ -f $(brew --prefix)$zsh_sug ]]; then
+if [[ -n $(which brew >/dev/null) && -f $(brew --prefix)$zsh_sug ]]; then
   source $(brew --prefix)$zsh_sug
 fi
 if [[ -f /usr$zsh_sug ]]; then
