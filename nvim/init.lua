@@ -22,3 +22,10 @@ end
 -- vim: ts=8 sts=2 sw=2 et
 
 vim.env.PATH = vim.env.VIM_PATH or vim.env.PATH
+
+-- asudakov:
+vim.api.nvim_cmd({
+  cmd = 'colorscheme',
+  -- light ones:
+  args = {'zellner'}, -- shine
+}, {})
