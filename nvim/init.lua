@@ -27,5 +27,7 @@ vim.env.PATH = vim.env.VIM_PATH or vim.env.PATH
 vim.api.nvim_cmd({
   cmd = 'colorscheme',
   -- light ones:
-  args = {'zellner'}, -- shine
+  -- args = {'zellner'}, -- shine
+  -- dark ones:
+  args = {'elflord'}, -- darkblue
 }, {})
