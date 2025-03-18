@@ -20,12 +20,15 @@ fi
 if [[ -f /usr$zsh_sug ]]; then
   source /usr$zsh_sug
 fi
-bindkey '^w' autosuggest-execute
-bindkey '^e' autosuggest-accept
+# bindkey '^w' autosuggest-execute
+# bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
-bindkey '^L' vi-forward-word
 bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
+bindkey '^w' vi-forward-word
+bindkey '^w' vi-forward-word
+bindkey '^e' vi-end-of-line
+bindkey '^a' vi-beginning-of-line
 
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
