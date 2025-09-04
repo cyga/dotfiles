@@ -20,6 +20,7 @@ fi
 if [[ -f /usr$zsh_sug ]]; then
   source /usr$zsh_sug
 fi
+
 # bindkey '^w' autosuggest-execute
 # bindkey '^e' autosuggest-accept
 bindkey '^u' autosuggest-toggle
@@ -30,8 +31,8 @@ bindkey '^w' vi-forward-word
 bindkey '^e' vi-end-of-line
 bindkey '^a' vi-beginning-of-line
 
-eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+eval "$(starship init zsh)"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
