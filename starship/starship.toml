@@ -6,22 +6,15 @@ palette = "catppuccin_mocha"
 right_format = """$all"""
 command_timeout = 1000
 
+[git_status]
+# there was no git_status configured here
+# it's very slow in go-code monorepo
+disabled = true
+
 [gcloud]
 # there was no gcloud configured here
 # disable it because it was found to be a culprit
 disabled = true
-# the glcoud related config from:
-# starship print-config > /tmp/effective-starship.toml
-# [gcloud]
-# format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
-# symbol = "☁️   "
-# style = "bold blue"
-# disabled = false
-# detect_env_vars = []
-#
-# [gcloud.region_aliases]
-#
-# [gcloud.project_aliases]
 
 [time]
 disabled = false
