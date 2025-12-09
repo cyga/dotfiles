@@ -178,3 +178,7 @@ f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
 eval "$(zoxide init zsh)"
+
+mkdir -p "$HOME/.atuin/bin"
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
